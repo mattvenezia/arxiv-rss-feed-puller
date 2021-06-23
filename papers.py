@@ -17,13 +17,21 @@ for i in range(num_entries):
 while (1):
 	num = input("Enter a TITLE NO ('q' for EXIT): ")
 	if num =='q':
-		break
-	entry = rssfeed.entries[int(num)-1]
-	print("************************************************************************************************************")
-	print("PAPER NO: "+str(num))
-	print('ID: '+entry.id)
-	print('TITLE: '+entry.title)
-	print('SUMMARY: '+entry.summary)
-	print("************************************************************************************************************")
+		break # quitting
+	elif not num.isnumeric():
+		print("thats not a number, jackass")
+		print("try again homie")
+	elif int(num) < 0 or int(num) > num_entries:
+		print("not in correct range, jackass")
+		print("try again")
+	else:
+		# prob good...hopefully
+		entry = rssfeed.entries[int(num)-1]
+		print("************************************************************************************************************")
+		print("PAPER NO: "+str(num))
+		print('ID: '+entry.id)
+		print('TITLE: '+entry.title)
+		print('SUMMARY: '+entry.summary)
+		print("************************************************************************************************************")
 
 print("EXITING...")
